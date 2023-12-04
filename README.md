@@ -1,13 +1,23 @@
 # Openlgen
-![GitHub release (with filter)](https://img.shields.io/github/v/release/phukon/ligen)
-![GitHub all releases](https://img.shields.io/github/downloads/phukon/ligen/total)
-![GitHub Release Date - Published_At](https://img.shields.io/github/release-date/phukon/ligen)
+![GitHub release (with filter)](https://img.shields.io/github/v/release/phukon/openlgen)
+![GitHub Release Date - Published_At](https://img.shields.io/github/release-date/phukon/openlgen)
 
 
 Blazing fast ⚡, command line license generator in Node.js. for your open source projects.<br/>
 To learn more about licenses, see [choosealicense.com](choosealicense.com).
 
-![Code_CxPbFb5ZXF](https://github.com/phukon/ligen/assets/60285613/48a617c9-81fe-4af3-bb50-fc947e89e92b)
+## Installation
+**⚠ This package requires global installation.**
+```
+$ npm install -g openlgen
+```
+**or use it by invoking**
+```
+$ npx openlgen
+```
+
+![Code_1VpZym2T1L](https://github.com/phukon/openlgen/assets/60285613/03842a17-b5b1-4439-b038-50440ff73532)
+
 
 ## Features
 
@@ -19,24 +29,21 @@ To learn more about licenses, see [choosealicense.com](choosealicense.com).
 
 ----------
 
-## Installation and Usage (CLI)
-
-```
-$ npm install openlgen --save-dev
-```
-
 Usage
 --------------
+
+
+Generate a license using the menu
+```bash
+$ openlgen
+```
 
 Generate a license automatically from package.json
 
 ```bash
-openlgen-auto
+$ openlgen-auto
 ```
-Generate a license using the menu
-```bash
-openlgen
-```
+
 
 Available licenses
 --------------

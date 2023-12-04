@@ -4,6 +4,11 @@
   "description": "Effortless License Generation for Developers.",
   "main": "index.js",
   "type": "module",
+    "repository": {
+    "type": "git",
+    "url": "https://github.com/phukon/openlgen"
+  },
+  "homepage": "https://github.com/phukon/openlgen#readme",
   "bin": {
     "openlgen-auto": "./bin/index.js",
     "openlgen": "./src/generate/buffer.js"
