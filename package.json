@@ -1,10 +1,10 @@
 {
   "name": "openlgen",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Effortless License Generation for Developers.",
   "main": "index.js",
   "type": "module",
-    "repository": {
+  "repository": {
     "type": "git",
     "url": "https://github.com/phukon/openlgen"
   },
