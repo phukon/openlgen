@@ -1,6 +1,6 @@
 {
   "name": "openlgen",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Effortless License Generation for Developers.",
   "main": "index.js",
   "type": "module",
