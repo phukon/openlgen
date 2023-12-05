@@ -16,7 +16,20 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
+  "keywords": [
+    "license",
+    "cli",
+    "spdx",
+    "generator",
+    "legal",
+    "standards",
+    "metadata",
+    "licenses",
+    "open source",
+    "oss",
+    "mit",
+    "license generator"
+  ],
   "author": "Riki Phukon",
   "license": "MIT",
   "dependencies": {
