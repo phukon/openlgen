@@ -14,7 +14,7 @@
     "openlgen": "./src/generate/buffer.js"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
   "keywords": [
     "license",
@@ -42,5 +42,8 @@
     "cosmiconfig": "^9.0.0",
     "debug": "^4.3.4",
     "picocolors": "^1.0.0"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0"
   }
 }

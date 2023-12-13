@@ -1,0 +1,6 @@
+node_modules/
+tests
+.prettierignore
+.prettierrc
+.gitignore
+jest.config.js
