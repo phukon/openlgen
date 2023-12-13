@@ -30,6 +30,7 @@ const modifyPackageJson = (newLicense, newAuthor) => {
     console.log('package.json updated successfully!');
   } catch (error) {
     console.error('Error modifying package.json:', error);
+    process.exit(1)
   }
 };
 

@@ -22,25 +22,34 @@ const loadJSON = (path) =>
 const schema = loadJSON('./schema.json');
 
 export async function getConfig() {
-  const lsc = licenseLoader.search(process.cwd());
-  const auth = nameLoader.search(process.cwd())
+  let lsc, auth;
+  let errorFlag = false;
 
-  if (!lsc) {
+  try {
+    lsc = licenseLoader.search(process.cwd());
+    auth = nameLoader.search(process.cwd());
+  } catch (error) {
+    logger.error('Error occurred while loading configuration:', error);
+    errorFlag = true;
+  }
+
+  if (errorFlag || !lsc) {
     logger.warning('Please have a valid license field.');
-     process.exit(1)
-  } else if (auth.config.trim().length < 1) {
+    process.exit(1);
+  } else if (!auth || auth.config.trim().length < 1) {
     logger.warning('No author defined in package.json');
-    process.exit(1)
+    process.exit(1);
   } else {
     const isLValid = ajv.validate(schema, lsc.config);
     const isAValid = ajv.validate(schema, auth.config);
+
     if (!isLValid || !isAValid) {
       logger.warning('Invalid configuration was supplied');
       console.log();
       console.log(betterAjvErrors(schema, `${lsc.config} ${auth.config}`, ajv.errors));
       process.exit(1);
     }
-    logger.highlight(`\nConfiguration found!`);
-    return { license: lsc.config, fullname: auth.config }
+    logger.highlight('\nConfiguration found!');
+    return { license: lsc.config, fullname: auth.config };
   }
 }
