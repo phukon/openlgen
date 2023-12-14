@@ -1,6 +1,6 @@
 # 🔑 Openlgen
 ![GitHub release (with filter)](https://img.shields.io/github/v/release/phukon/openlgen)
-![GitHub Release Date - Published_At](https://img.shields.io/github/release-date/phukon/openlgen)
+![npm](https://img.shields.io/npm/dt/openlgen)
 
 
 Blazing fast ⚡, command line license generator in Node.js. for your open source projects.<br/>
