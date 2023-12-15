@@ -4,7 +4,7 @@
 
 
 Blazing fast ⚡, command line license generator in Node.js. for your open source projects.<br/>
-To learn more about licenses, see [choosealicense.com](choosealicense.com).
+To learn more about licenses, see [choosealicense.com](https://choosealicense.com).
 
 ## Installation
 **⚠ This package requires global installation.**
