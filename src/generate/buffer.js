@@ -18,21 +18,27 @@ const replacePlaceholders = (text, fullname, year) => {
 };
 
 const modifyPackageJson = (newLicense, newAuthor) => {
+  const packageJsonPath = 'package.json';
   try {
-    const packageJson = JSON.parse(fs.readFileSync('package.json', 'utf8'));
-    packageJson.license = newLicense;
+    if (fs.existsSync(packageJsonPath)) {
+      const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, 'utf8'));
+      packageJson.license = newLicense;
 
-    if (newAuthor) {
-      packageJson.author = newAuthor;
+      if (newAuthor) {
+        packageJson.author = newAuthor;
+      }
+
+      fs.writeFileSync(packageJsonPath, JSON.stringify(packageJson, null, 2));
+      console.log('package.json updated successfully!');
+    } else {
+      console.log('package.json does not exist. Skipping modification.');
     }
-
-    fs.writeFileSync('package.json', JSON.stringify(packageJson, null, 2));
-    console.log('package.json updated successfully!');
   } catch (error) {
     console.error('Error modifying package.json:', error);
-    process.exit(1)
+    process.exit(1);
   }
 };
+
 
 const fetchData = async () => {
   try {
