@@ -50,7 +50,7 @@ const fetchData = async () => {
     data.forEach((entry) => {
       ghdata.push({
         name: entry.spdx_id,
-        value: entry.key,
+        value: entry.spdx_id,
         description: entry.name,
       });
     });
@@ -77,7 +77,7 @@ const customLicenseSelection = async () => {
   entries.license = lcs;
 
   if (
-    ['bsd-2-clause', 'bsd-3-clause', 'mit', 'isc'].includes(entries.license)
+    ['BSD-2-Clause', 'BSD-3-Clause', 'MIT', 'ISC'].includes(entries.license)
   ) {
     flag = true;
   }

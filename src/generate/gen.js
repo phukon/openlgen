@@ -7,10 +7,10 @@ export async function autogen(entries, flag) {
   entries.license = config.license.toLowerCase();
   entries.fullname = config.fullname;
   if (
-    entries.license === 'bsd-2-clause' ||
-    entries.license === 'bsd-3-clause' ||
-    entries.license === 'mit' ||
-    entries.license === 'isc'
+    entries.license === 'BSD-2-Clause' ||
+    entries.license === 'BSD-3-Clause' ||
+    entries.license === 'MIT' ||
+    entries.license === 'ISC'
   ) {
     flag = true;
     return {
