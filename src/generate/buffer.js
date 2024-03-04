@@ -145,6 +145,8 @@ const generateLicense = async (options = {}) => {
   }
 };
 
+
+// Main function
 const askOptions = async () => {
   try {
     await fetchData();
