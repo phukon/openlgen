@@ -3,7 +3,10 @@ import { GithubLicenseResponse, LicenseEntry } from '../types';
 const GITHUB_API_BASE = 'https://api.github.com/licenses';
 
 export class ApiError extends Error {
-  constructor(message: string, public statusCode: number) {
+  constructor(
+    message: string,
+    public statusCode: number,
+  ) {
     super(message);
     this.name = 'ApiError';
   }
@@ -12,11 +15,11 @@ export class ApiError extends Error {
 export async function fetchFromGitHub(url: string): Promise<any> {
   try {
     const response = await fetch(url);
-    
+
     if (!response.ok) {
       throw new ApiError(
         `GitHub API request failed: ${response.statusText}`,
-        response.status
+        response.status,
       );
     }
 
@@ -26,8 +29,10 @@ export async function fetchFromGitHub(url: string): Promise<any> {
       throw error;
     }
     throw new ApiError(
-      `Network error: ${error instanceof Error ? error.message : String(error)}`,
-      0
+      `Network error: ${
+        error instanceof Error ? error.message : String(error)
+      }`,
+      0,
     );
   }
 }
@@ -41,6 +46,8 @@ export async function fetchAllLicenses(): Promise<LicenseEntry[]> {
   }));
 }
 
-export async function fetchLicenseById(licenseId: string): Promise<GithubLicenseResponse> {
+export async function fetchLicenseById(
+  licenseId: string,
+): Promise<GithubLicenseResponse> {
   return fetchFromGitHub(`${GITHUB_API_BASE}/${licenseId}`);
 }

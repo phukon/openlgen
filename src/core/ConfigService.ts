@@ -28,7 +28,7 @@ export class ConfigService {
 
     return {
       license: license.config,
-      fullname: author.config
+      fullname: author.config,
     };
   }
 
@@ -36,7 +36,11 @@ export class ConfigService {
     const isValid = this.ajv.validate(this.schema, config);
     if (!isValid) {
       throw new Error(
-        `Invalid ${type} configuration:\n${betterAjvErrors(this.schema, config, this.ajv.errors)}`
+        `Invalid ${type} configuration:\n${betterAjvErrors(
+          this.schema,
+          config,
+          this.ajv.errors,
+        )}`,
       );
     }
   }
