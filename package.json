@@ -2,7 +2,9 @@
   "name": "openlgen",
   "version": "1.2.0",
   "description": "Effortless License Generation for Developers.",
-  "main": "index.js",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
   "type": "module",
   "repository": {
     "type": "git",
@@ -10,11 +12,14 @@
   },
   "homepage": "https://github.com/phukon/openlgen#readme",
   "bin": {
-    "openlgen-auto": "./bin/index.js",
-    "openlgen": "./src/generate/buffer.js"
+    "openlgen": "./bin/index.js"
   },
   "scripts": {
-    "test": "jest"
+    "clean": "rimraf dist",
+    "prebuild": "npm run clean",
+    "build": "tsup",
+    "preversion": "npm run build",
+    "postversion": "git push --tags"
   },
   "keywords": [
     "license",
@@ -44,6 +49,14 @@
     "picocolors": "^1.0.0"
   },
   "devDependencies": {
-    "jest": "^29.7.0"
+    "@semantic-release/git": "^10.0.1",
+    "@types/node": "^22.10.6",
+    "rimraf": "^6.0.1",
+    "semantic-release": "^24.2.1",
+    "tsup": "^8.3.5",
+    "typescript": "^5.7.3"
+  },
+  "publishConfig": {
+    "provenance": true
   }
 }

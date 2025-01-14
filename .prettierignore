@@ -1,3 +1,5 @@
 node_modules
 LICENSE
 README.md
+.git
+pnpm-lock.yaml
