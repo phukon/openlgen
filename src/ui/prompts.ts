@@ -11,8 +11,27 @@ export class PromptService {
     });
   }
 
+    static async getGenerationMode(): Promise<'auto' | 'custom'> {
+    const answer = await select({
+      message: 'Select generation mode',
+      choices: [
+        {
+          name: 'Auto',
+          value: 'auto',
+          description: 'Automatically generate using package.json values'
+        },
+        {
+          name: 'Custom',
+          value: 'custom',
+          description: 'Manually configure your license'
+        }
+      ]
+    });
+    return answer as 'auto' | 'custom';
+  }
+
   static async getAuthorDetails(): Promise<AuthorDetails> {
-    const fullname = await input({ 
+    const fullname = await input({
       message: 'Enter your name:',
       validate: (input: string) => input.trim().length > 0
     });
