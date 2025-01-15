@@ -45,6 +45,16 @@ Generate a license using the menu
 $ openlgen
 ```
 
+Show help menu
+```bash
+$ openlgen --help
+```
+
+Show version
+```bash
+$ openlgen --version
+```
+
 Available licenses
 --------------
 ```

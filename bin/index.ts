@@ -4,6 +4,10 @@ import { generateLicense, fetchLicenses } from '../src/core/LicenseService';
 import { ConfigService } from '../src/core/ConfigService';
 import { updatePackageJson, writeLicenseFile } from '../src/utils/fileUtils';
 import { PromptService } from '../src/ui/prompts';
+import { dirname } from 'path';
+import { fileURLToPath } from 'url';
+import { readFileSync } from 'fs';
+import { join } from 'path';
 
 const program = new Command();
 
@@ -11,10 +15,26 @@ const schema = {
   type: 'string',
 };
 
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+const packageJson = JSON.parse(
+  readFileSync(join(__dirname, '../package.json'), 'utf8')
+);
+const { version } = packageJson;
+
 program
   .name('openlgen')
   .description('Generate licenses for your project blazing fast')
-  .version('0.8.0')
+  .version(version)
+  .addHelpText(
+    'after',
+    `
+Examples:
+  $ openlgen              # Interactive license generation
+  $ openlgen --version    # Show version
+  $ openlgen --help       # Show help
+`
+  )
   .action(async () => {
     try {
       const mode = await PromptService.getGenerationMode();
@@ -64,7 +84,7 @@ program
     } catch (error) {
       console.error(
         'Error:',
-        error instanceof Error ? error.message : String(error),
+        error instanceof Error ? error.message : String(error)
       );
       process.exit(1);
     }

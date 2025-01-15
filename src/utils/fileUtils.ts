@@ -1,3 +1,4 @@
+import os from 'os';
 import fs from 'fs/promises';
 import { join } from 'path';
 import { randomUUID } from 'crypto';
@@ -7,7 +8,7 @@ async function writeFileAtomically(
   filepath: string,
   content: string,
 ): Promise<void> {
-  const tempPath = join(process.cwd(), `.${randomUUID()}.tmp`);
+  const tempPath = join(os.tmpdir(), `openlgen-${randomUUID()}.tmp`);
   try {
     await fs.writeFile(tempPath, content, 'utf8');
     await fs.rename(tempPath, filepath);
