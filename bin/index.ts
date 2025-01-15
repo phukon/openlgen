@@ -2,7 +2,7 @@
 import { Command } from 'commander';
 import { generateLicense, fetchLicenses } from '../src/core/LicenseService';
 import { ConfigService } from '../src/core/ConfigService';
-import { FileUtils } from '../src/utils/fileUtils';
+import { updatePackageJson, writeLicenseFile } from '../src/utils/fileUtils';
 import { PromptService } from '../src/ui/prompts';
 
 const program = new Command();
@@ -41,8 +41,8 @@ program
           year: authorDetails.year,
         });
 
-        await FileUtils.writeLicenseFile(licenseContent);
-        await FileUtils.updatePackageJson({
+        await writeLicenseFile(licenseContent);
+        await updatePackageJson({
           license: selectedLicense,
           author: authorDetails.fullname,
         });
@@ -53,8 +53,8 @@ program
           fullname: config.fullname,
         });
 
-        await FileUtils.writeLicenseFile(licenseContent);
-        await FileUtils.updatePackageJson({
+        await writeLicenseFile(licenseContent);
+        await updatePackageJson({
           license: config.license,
           author: config.fullname,
         });

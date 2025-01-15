@@ -3,8 +3,6 @@ import { LicenseEntry, LicenseDetails } from '../types';
 
 const GITHUB_LICENSE_API = 'https://api.github.com/licenses';
 
-
-
 function replacePlaceholders(
   text: string,
   { fullname, year }: { fullname: string; year?: number },

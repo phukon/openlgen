@@ -20,7 +20,7 @@ export class ConfigService {
     const author = this.authorLoader.search(process.cwd());
 
     if (!license || !author) {
-      throw new Error('Missing required configuration');
+      throw new Error('Missing required configuration. Please ensure both "author" and "license" fields exist in your package.json file.');
     }
 
     this.validateConfig(license.config, 'license');
@@ -39,7 +39,7 @@ export class ConfigService {
         `Invalid ${type} configuration:\n${betterAjvErrors(
           this.schema,
           config,
-          this.ajv.errors,
+          this.ajv.errors || [],
         )}`,
       );
     }
