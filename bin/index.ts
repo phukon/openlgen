@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 import { Command } from 'commander';
-import { LicenseService } from '../src/core/LicenseService';
+import { generateLicense, fetchLicenses } from '../src/core/LicenseService';
 import { ConfigService } from '../src/core/ConfigService';
 import { FileUtils } from '../src/utils/fileUtils';
 import { PromptService } from '../src/ui/prompts';
@@ -20,7 +20,7 @@ program
       const mode = await PromptService.getGenerationMode();
 
       if (mode === 'custom') {
-        const licenses = await LicenseService.fetchLicenses();
+        const licenses = await fetchLicenses();
         const selectedLicense = await PromptService.getLicenseChoice(licenses);
         const authorDetails = await PromptService.getAuthorDetails();
 
@@ -35,7 +35,7 @@ program
           process.exit(0);
         }
 
-        const licenseContent = await LicenseService.generateLicense({
+        const licenseContent = await generateLicense({
           license: selectedLicense,
           fullname: authorDetails.fullname,
           year: authorDetails.year,
@@ -48,7 +48,7 @@ program
         });
       } else {
         const config = await new ConfigService(schema).load();
-        const licenseContent = await LicenseService.generateLicense({
+        const licenseContent = await generateLicense({
           license: config.license,
           fullname: config.fullname,
         });
