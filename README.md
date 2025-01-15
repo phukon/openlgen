@@ -21,11 +21,18 @@ $ npx openlgen
 
 ## Features
 
-- **Package.json Modification:** Update the `license` and `author` fields in `package.json` automatically.
-- **User Interaction:** Interactive prompts for license selection and input fields
-- **Automated License Generation:** Auto generates licenses for your projects according to the package.json configuration.
-- **Customization:** Choose from various license types or input custom details.
-- **Error Handling:** Informative error messages for better troubleshooting.
+- **Interactive CLI:** User-friendly command-line interface with clear prompts and options
+- **Dual Generation Modes:**
+  - **Auto Mode:** Automatically generates licenses using package.json configuration
+  - **Custom Mode:** Manual configuration with interactive prompts
+- **Package.json Integration:** 
+  - Automatic detection of existing configuration
+  - Updates license and author fields automatically
+- **Extensive License Support:** 13+ popular open source licenses including:
+  - MIT, Apache 2.0, GPL v3, and more
+- **Data Validation:** Robust error handling and input validation
+- **GitHub API Integration:** Fresh license templates directly from GitHub
+- **Atomic File Operations:** Safe file writing with rollback capabilities
 
 ----------
 
@@ -37,13 +44,6 @@ Generate a license using the menu
 ```bash
 $ openlgen
 ```
-
-Generate a license automatically from package.json
-
-```bash
-$ openlgen-auto
-```
-
 
 Available licenses
 --------------
