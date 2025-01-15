@@ -1,6 +1,14 @@
+.github
 node_modules/
+src/
+bin/
+.gitattributes
+.vscode/
 test
 .prettierignore
 .prettierrc
 .gitignore
+tsconfig.json
+tsup.config.ts
 jest.config.js
+release.config.cjs
