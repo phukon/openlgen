@@ -11,7 +11,17 @@ async function writeFileAtomically(
   const tempPath = join(os.tmpdir(), `openlgen-${randomUUID()}.tmp`);
   try {
     await fs.writeFile(tempPath, content, 'utf8');
-    await fs.rename(tempPath, filepath);
+    try {
+      await fs.rename(tempPath, filepath);
+    } catch (error) {
+      if (error instanceof Error && 'code' in error && error.code === 'EXDEV') {
+        // If rename fails due to cross-device link, fallback to copy+unlink
+        await fs.copyFile(tempPath, filepath);
+        await fs.unlink(tempPath);
+      } else {
+        throw error;
+      }
+    }
   } catch (error) {
     await fs.unlink(tempPath).catch(() => {});
     throw error;
